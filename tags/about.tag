@@ -23,7 +23,7 @@
             <p class="no-margin color-light">
               <div class="myInfoContainer" each={myInfo}>
                 <strong class="fix-width-100">
-                <i class="fa fa-space-shuttle margin-right-5"></i>
+                <i class="{infoIcon} margin-right-5"></i>
                   {infoItem}
                 </strong>
                 : {infoContent}
@@ -50,9 +50,10 @@
               : 1234 Jalan Road, Fake City, IS 421 123.<br/> -->
               <br>
             </p>
-            <input type="text" ref="myInfoNewItem" placeholder="Enter An Item">
-            <input type="text" ref="myInfoNewContent" placeholder="Enter A Value">
-            <button type="button" onclick={ addItem }>Add</button>
+            <input type="text" class="form-control form-flat" ref="myInfoNewIcon" placeholder="fontawesome icon. example: fab fa-adobe">
+            <input type="text" class="form-control form-flat" ref="myInfoNewItem" placeholder="Enter An Item">
+            <input type="text" class="form-control form-flat" ref="myInfoNewContent" placeholder="Enter A Value">
+            <button type="submit" class="btn primary-btn" onclick={ addItem }>Add</button>
           </div>
         </div>
       </div>
@@ -92,33 +93,34 @@
     var that = this;
 
     this.myInfo = [{
-      infoIcon: "fa-globe",
+      infoIcon: "fas fa-city",
       infoItem: "Birthplace",
       infoContent: "Beijing, China"
     }, {
-      infoIcon: "fa-skype",
+      infoIcon: "fab fa-skype",
       infoItem: "Skype",
       infoContent: "usename.fake"
     }, {
-      infoIcon: "fa-envelope",
+      infoIcon: "fas fa-envelope",
       infoItem: "Email",
       infoContent: "yuntong.man@columbia.edu"
     }, {
-      infoIcon: "fa-globe",
+      infoIcon: "fas fa-globe",
       infoItem: "Website",
       infoContent: "www.someonedomain.me"
     }, {
-      infoIcon: "fa-github",
+      infoIcon: "fab fa-github",
       infoItem: "Github",
       infoContent: "github.com/ymm2110"
     },{
-      infoIcon: "fa-location-arrow",
-      infoItem: "Adresse",
+      infoIcon: "fas fa-map-marked",
+      infoItem: "Address",
       infoContent: "1234 Jalan Road, Fake City, IS 421 123."
     }];
 
     this.addItem = function(event) {
       var newItem = {};
+      newItem.infoIcon = this.refs.myInfoNewIcon.value;
       newItem.infoItem = this.refs.myInfoNewItem.value;
       newItem.infoContent = this.refs.myInfoNewContent.value;
 
@@ -129,72 +131,73 @@
   <script>
 
   </script>
+
   <style>
-    .my-profile{
-      position:relative;
-      .my-pict{
-        background-repeat:  no-repeat;
-        background-position: center;
-        background-size: cover;
-        background-image: umy-pictrl(../images/YuntongMan.jpg);
+  :scope {
+    position:relative;
+    .my-pict{
+      background-repeat:  no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-image: umy-pictrl(../images/YuntongMan.jpg);
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      @media (max-width: @res_mobile) {
+        position: relative;
+        height: 300px;
+
+      }
+
+      .overfly{
+        background: fade(@white, 70%);
         position: absolute;
+        width: 100%;
         left: 0;
         top: 0;
+        .transition(all 0.8s ease 0s);
+        overflow: hidden;
         height: 100%;
-        @media (max-width: @res_mobile) {
-          position: relative;
-          height: 300px;
 
-        }
 
-        .overfly{
-          background: fade(@white, 70%);
+        .text-botttom{
           position: absolute;
           width: 100%;
-          left: 0;
-          top: 0;
           .transition(all 0.8s ease 0s);
-          overflow: hidden;
-          height: 100%;
-
-
-          .text-botttom{
-            position: absolute;
-            width: 100%;
-            .transition(all 0.8s ease 0s);
-            bottom: 0;
-            right: 0;
-            padding: 40px;
-            text-align: right;
-
-          }
-          &:hover{
-            background: transparent;
-            .text-botttom{
-              bottom: -100%;
-            }
-          }
-        }
-      }
-
-      .my-desc, .my-pict{
-        width: 50%;
-        @media (max-width: @res_mobile) {
-          width: 100% !important;
-        }
-      }
-
-      .my-desc{
-        float: right;
-
-        .inner-text{
-          max-width: 585px;
+          bottom: 0;
+          right: 0;
           padding: 40px;
-          @media (max-width: @res_mobile) {
-            max-width: 100%;
-          }
+          text-align: right;
+
+        }
+        &:hover{
+          /*        background: transparent;
+                  .text-botttom{
+                    bottom: -100%;
+                  }*/
         }
       }
     }
+
+    .my-desc, .my-pict{
+      width: 50%;
+      @media (max-width: @res_mobile) {
+        width: 100% !important;
+      }
+    }
+
+    .my-desc{
+      float: right;
+
+      .inner-text{
+        max-width: 585px;
+        padding: 40px;
+        @media (max-width: @res_mobile) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
   </style>
 </about>

@@ -23,23 +23,8 @@
 
           <div class="col-md-6">
             <ul class="breadcrumb main-nav nav">
-              <li class="active">
-                <a href="#home" class="link-inpage">Home</a>
-              </li>
-              <li >
-                <a href="#about" class="link-inpage">About</a>
-              </li>
-              <li >
-                <a href="#resume" class="link-inpage">Resume</a>
-              </li>
-              <li >
-                <a href="#portfolio" class="link-inpage">Portfolio</a>
-              </li>
-              <li >
-                <a href="#blog" class="link-inpage">Blog</a>
-              </li>
-              <li >
-                <a href="#contact" id="contact-tab" class="link-inpage">Contact</a>
+              <li class="active" each={navLinks}>
+                <a href="{href}" class="link-inpage">{link}</a>
               </li>
             </ul>
           </div>
@@ -48,11 +33,6 @@
               <li>
                 <a href="#">
                   <i class="fa fa-facebook"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-google"></i>
                 </a>
               </li>
               <li>
@@ -76,4 +56,27 @@
       </div>
     </div>
   </div>
+
+  <script>
+    var that = this;
+    this.navLinks = [{
+      link: "Home",
+      href: "#home"
+    }, {
+      link: "About",
+      href: "#about"
+    }, {
+      link: "Resume",
+      href: "#resume"
+    }, {
+      link: "Portfolio",
+      href: "#resume"
+    }, {
+      link: "Blog",
+      href: "#resume"
+    }, {
+      link: "Contact",
+      href: "#resume"
+    }];
+  </script>
 </navbar>

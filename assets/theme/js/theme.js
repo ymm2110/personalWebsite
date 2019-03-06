@@ -3,6 +3,8 @@
 
   //Run function When Document Ready
   $(document).ready(function() {
+    console.log("$(document).ready(function()");
+    console.log ($('#typed'));
     initTooltip();
     initGetHWindow();
     initParallax();
@@ -163,6 +165,7 @@
 
   //Typed Animation
   function initTyped() {
+    console.log("function initTyped()");
     $("#typed").typed({
       strings: ["A Filmmaker", "A Developer", "A Freelancer"],
       // typing speed
