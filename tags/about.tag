@@ -14,17 +14,21 @@
           <div class="inner-text">
             <h3 class=" color-dark no-margin-top">Hello There!</h3>
             <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-            <p class="no-margin">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+            <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+            <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
           </div>
         </div>
         <div class="bg-dark clearfix">
           <div class="inner-text">
-            <p class="no-margin color-light ">
-              <strong class="fix-width-100">
-                <i class="fa fa-globe margin-right-5"></i>
-                Birthplace</strong>
-              : Beijing, China<br/>
-              <strong class="fix-width-100">
+            <p class="no-margin color-light">
+              <div class="myInfoContainer" each={myInfo}>
+                <strong class="fix-width-100">
+                <i class="fa fa-space-shuttle margin-right-5"></i>
+                  {infoItem}
+                </strong>
+                : {infoContent}
+              </div>
+              <!-- <strong class="fix-width-100">
                 <i class="fa fa-skype margin-right-5"></i>
                 Skype</strong>
               : usename.fake<br/>
@@ -43,8 +47,12 @@
               <strong class="fix-width-100">
                 <i class="fa fa-location-arrow margin-right-5"></i>
                 Adresse</strong>
-              : 1234 Jalan Road, Fake City, IS 421 123.<br/>
+              : 1234 Jalan Road, Fake City, IS 421 123.<br/> -->
+              <br>
             </p>
+            <input type="text" ref="myInfoNewItem" placeholder="Enter An Item">
+            <input type="text" ref="myInfoNewContent" placeholder="Enter A Value">
+            <button type="button" onclick={ addItem }>Add</button>
           </div>
         </div>
       </div>
@@ -108,6 +116,16 @@
       infoItem: "Adresse",
       infoContent: "1234 Jalan Road, Fake City, IS 421 123."
     }];
+
+    this.addItem = function(event) {
+      var newItem = {};
+      newItem.infoItem = this.refs.myInfoNewItem.value;
+      newItem.infoContent = this.refs.myInfoNewContent.value;
+
+      this.myInfo.push(newItem);
+      this.refs.myInfoNewItem.value = "";
+      this.refs.myInfoNewContent.value = "";
+    };
   <script>
 
   </script>
@@ -151,10 +169,10 @@
 
           }
           &:hover{
-            /*        background: transparent;
-                    .text-botttom{
-                      bottom: -100%;
-                    }*/
+            background: transparent;
+            .text-botttom{
+              bottom: -100%;
+            }
           }
         }
       }
